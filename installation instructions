@@ -1,0 +1,14 @@
+// Install Express
+npm install express
+
+// Install the Express Generator
+npm install express-generator@4.x
+
+// Setup our Express Application
+./node_modules/.bin/express --view=ejs --git
+
+// Add any dependency modules
+npm install
+
+// Remove the Express generator
+npm uninstall express-generator
