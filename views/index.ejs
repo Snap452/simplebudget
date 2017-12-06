@@ -1,19 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <% include headerStuff %>
-</head>
-<body>
-  <% include pageHeader %>
-  <% if (notelist.length > 0) { %>
-    <ul><%
-    for (var note of notelist) {
-      %><li><%= note.key %>:
-      <a href="/notes/view?key=<%= note.key %>"><%= note.title %></a>
-      </li><%
-    }
-%></ul>
-<% } %>
+<% include header %>  
+<section class="center" class="mainbody">
+	<div class="topbar">
+    <h1 class="top-bar-title">Welcome to $imBudget</h1>
+    <h5 class="top-bar-title">A Simple Budgeting App</h5>
+	</div>
+	<div id="home-box-div">
+    <a href="transactions">
+  	  <div class="home-box">
+  	    <h4>Track Spending</h4>
+        <img src="/images/home-box-1-image.png" alt="Track Spending" title="Track Spending" />
+  	  </div>
+  	</a>
+  	<a href="planner">
+  	  <div class="home-box">
+  	    <h4>Plan Ahead</h4>
+        <img src="/images/home-box-2-image.png" alt="Plan Ahead" title="Plan Ahead" />
+  	  </div>
+	  </a>
+	  <a href="goals">
+  	  <div class="home-box">
+  	    <h4>Achieve Goals</h4>
+        <img src="/images/home-box-3-image.png" alt="Achieve Goals" title="Achieve Goals" />
+  	  </div>
+    </a>
+	</div>
+	<div id="home-text-div">
+	  <div class="home-text">
+      <p>Keep a record of your transaction history with an easy-to-use ledger.</p>
+    </div>
+    <div class="home-text">
+      <p>Prepare for upcoming expenses so you are never late on payments.</p>
+    </div>
+    <div class="home-text">
+      <p>Stay in touch with your financial goals and see them to completion.</p>
+    </div>
+	</div>
+</section>
 <% include footer %>
-</body>
-</html>

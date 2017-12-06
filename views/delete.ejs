@@ -1,0 +1,8 @@
+<% include header %>
+  <h1><%= title %></h1>
+        <form action="/transactions/delete" method="post">
+        <input type="hidden" name="_id" value="<%= transaction._id%>" />
+        <input name="submit" type="submit" value="Delete" class="cta-red" />
+        </form>
+    <a href="/transactions" class="cta">Cancel</a>
+<% include footer %>
