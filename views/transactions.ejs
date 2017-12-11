@@ -16,14 +16,14 @@
 <% } else { %>
 <section class="center" class="mainbody">
   <div class="topbar">
-    <h3>
+    <h4>
       Account: 
       <select>
         <option value="0000">0000</option>
 				<option value="1234">1234</option>
 				<option value="9999">9999</option>
       </select>
-    </h3>
+    </h4>
   </div>
   <table class="ledger-table">
     <thead>
@@ -41,8 +41,8 @@
 		<tbody>
       <% for (var transaction of transactions) { %>
       <tr>
-        <td><a href="/transactions/view/<%= transaction._id %>"><%= transaction.date %></a></td>
-        <td><%= transaction.desc %></td>
+        <td><%= transaction.date %></td>
+        <td><a href="/transactions/edit/<%= transaction._id %>"><%= transaction.desc %></a></td>
         <td><%= transaction.type %></td>
         <td class="amount-align"><%= transaction.amount %></td>
         <td class="amount-align"><%= transaction.amount %></td>

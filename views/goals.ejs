@@ -1,4 +1,6 @@
 <% include header %>
+
+<!--
 <section class="center" class="mainbody">
 	<div class="topbar">
 	
@@ -25,7 +27,7 @@
 			<div class="col-4">
 			  <div class="goal-column">
   				<h5 class="goal-header center-align">
-  				  <a href="" class="cta">Create Goal</a>
+  				  <a href="/goals/add" class="cta">Create Goal</a>
   				</h5>
   			</div>
 			</div>
@@ -51,44 +53,40 @@
 		</div>
 	</div>
 </section>
+-->
 
 <% if (goals.length === 0) { %>
-    <h1>There are currently no goals in the database</h1>
-    <p><a href="/goals/add">Add a goal</a></p>
-  <% } else { %>
-  <section class="center" class="mainbody">
-    <div class="topbar">
-      <h4>
-        Account: 
-        <select>
-          <option value="0000">0000</option>
-					<option value="1234">1234</option>
-					<option value="9999">9999</option>
-        </select>
-      </h4>
-    </div>
-    <table class="ledger-table">
-      <thead>
-  			<tr>
-  				<th>Goal</th>
-          <th>Target Amount</th>
-          <th>Target Date</th>
-  			</tr>
-  		</thead>
-  		<tbody>
-        <% for (var goal of goals) { %>
-        <tr>
-          <td><a href="/goals/view/<%= goal._id %>"><%= goal.goal_name %></a></td>
-          <td><%= goal.goal_target %></td>
-          <td><%= goal.goal_length %></td>
-        </tr>
-        <% } %>
-      </tbody>
-    </table>
-    <div class="float-right">
-      <a href="/goals/add" class="cta float-right">Add Goal</a>
-    </div>
-  </section>
-  <% } %>
+<section class="center" class="mainbody">
+  <div class="topbar">
+        <h5 class="mb-3">You have not yet created a goal.</h5>
+        <a href="/goals/add" class="cta">Create Goal</a>
+  </div>
+</section>
+<% } else { %>
+<section class="center" class="mainbody">
+  <div class="topbar"></div>
+  <table class="ledger-table">
+    <thead>
+			<tr>
+				<th>Goal</th>
+        <th>Target Amount</th>
+        <th>Target Date</th>
+			</tr>
+		</thead>
+		<tbody>
+      <% for (var goal of goals) { %>
+      <tr>
+        <td><a href="/goals/view/<%= goal._id %>"><%= goal.goal_name %></a></td>
+        <td><%= goal.goal_target %></td>
+        <td><%= goal.goal_length %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <div class="float-right">
+    <a href="/goals/add" class="cta float-right">Add Goal</a>
+  </div>
+</section>
+<% } %>
   
 <% include footer %>

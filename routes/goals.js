@@ -20,7 +20,7 @@ router.get('/view/:id', function(req, res, next) {
       next(new Error('Goal Not Found'));
     } else {
       res.render('view_goal', {
-        title: `Goal ${goal.date} ${goal.amount} ${goal.type}`,
+        title: `View Goal: ${goal.goal_name}`,
         goal: goal,
         menuPath: 'Goals'
       });
@@ -34,7 +34,7 @@ router.get('/edit/:id', function(req, res, next) {
       next(new Error('Goal Not Found'));
     } else {
       res.render('add_edit_goal', {
-        title: `Goal ${goal.date} ${goal.amount} ${goal.type}`,
+        title: `Edit Goal: ${goal.goal_name}`,
         goal: goal,
         menuPath: 'Goals'
       });
@@ -48,7 +48,7 @@ router.get('/delete/:id', function(req, res, next) {
       next(new Error('Goal Not Found'));
     } else {
       res.render('delete', {
-        title: `Goal ${goal.date} ${goal.amount} ${goal.type}`,
+        title: `Delete Goal ${goal.goal_name}`,
         goal: goal,
         menuPath: 'Goals'
       });
