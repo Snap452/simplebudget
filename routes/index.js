@@ -39,15 +39,20 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/login', function(req, res) {
+  res.redirect('/login/transactions');
+});
+
+router.get('/login/:redirect', function(req, res) {
   res.render('login', {
     user: req.user,
-    title: 'SimBudget | Register',
-    menuPath: 'Register'
+    title: 'SimBudget | Log In',
+    menuPath: 'Register',
+    redirectURL: req.params.redirect
   });
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-  res.redirect('/');
+  res.redirect('/' + req.body.redirect);
 });
 
 router.get('/logout', function(req, res) {
@@ -184,13 +189,6 @@ router.get('/planner', (req, res, next) => {
   });
 });
 
-/* GET Goals page. */
-router.get('/goals', (req, res, next) => {
-  res.render('goals', {
-    title: 'SimBudget | Goals',
-    menuPath: 'Goals'
-  });
-});
 
 /* Goals functionality. */
 var goals = require('../models/goals-m');

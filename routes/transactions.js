@@ -116,4 +116,11 @@ function redirectIfLoggedIn(req, res, next) {
   res.redirect('/login');
 }
 
+function redirectIfLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login' + req.originalUrl);
+}
+
 module.exports = router;

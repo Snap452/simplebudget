@@ -1,52 +1,61 @@
 <% include header %>
-  <% if (transactions.length === 0) { %>
-    <h1>There are currently no transactions in the database</h1>
-    <p><a href="/transactions/add">Add a transaction</a></p>
-  <% } else { %>
-  <section class="center" class="mainbody">
-    <div class="topbar">
-      <h4>
-        Account: 
-        <select>
-          <option value="0000">0000</option>
-					<option value="1234">1234</option>
-					<option value="9999">9999</option>
-        </select>
-      </h4>
-    </div>
-    <table class="ledger-table">
-      <thead>
-  			<tr>
-  				<th>Date</th>
-          <th>Description</th>
-          <th>Type</th>
-          <th class="amount-align">Withdraws</th>
-          <th class="amount-align">Deposits</th>
-          <th class="amount-align">Balance</th>
-          <th>&nbsp;</th>
-          <th>&nbsp;</th>
-  			</tr>
-  		</thead>
-  		<tbody>
-        <% for (var transaction of transactions) { %>
-        <tr>
-          <td><a href="/transactions/view/<%= transaction._id %>"><%= transaction.date %></a></td>
-          <td><%= transaction.desc %></td>
-          <td><%= transaction.type %></td>
-          <td class="amount-align"><%= transaction.amount %></td>
-          <td class="amount-align"><%= transaction.amount %></td>
-          <td class="amount-align"><%= transaction.amount %></td>
-          <td class="amount-align"><a href="/transactions/edit/<%= transaction._id %>"><img src="images/icon_edit.png" alt="Edit" title="Edit" class="ledger-icon" /></a></td>
-          <td><a href="/transactions/delete/<%= transaction._id %>"><img src="images/icon_delete.png" alt="Delete" title="Delete" class="ledger-icon" /></a></td>
-        </tr>
-        <% } %>
-      </tbody>
-      <tfoot>
-			</tfoot>
-    </table>
-    <div class="float-right">
-      <a href="/transactions/add" class="cta float-right">Add Transaction</a>
-    </div>
-  </section>
-  <% } %>
+<% if (transactions.length === 0) { %>
+<section class="center" class="mainbody">
+  <div class="topbar">
+        <h4>Account:
+          <select>
+            <option value="0000">0000</option>
+    				<option value="1234">1234</option>
+    				<option value="9999">9999</option>
+          </select>
+        </h4>
+        <h5 class="mb-3">You have not yet recorded any transactions for this account.</h5>
+        <a href="/transactions/add" class="cta">Add Transaction</a>
+  </div>
+</section>
+<% } else { %>
+<section class="center" class="mainbody">
+  <div class="topbar">
+    <h3>
+      Account: 
+      <select>
+        <option value="0000">0000</option>
+				<option value="1234">1234</option>
+				<option value="9999">9999</option>
+      </select>
+    </h3>
+  </div>
+  <table class="ledger-table">
+    <thead>
+			<tr>
+				<th>Date</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th class="amount-align">Withdrawals</th>
+        <th class="amount-align">Deposits</th>
+        <th class="amount-align">Balance</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+      <% for (var transaction of transactions) { %>
+      <tr>
+        <td><a href="/transactions/view/<%= transaction._id %>"><%= transaction.date %></a></td>
+        <td><%= transaction.desc %></td>
+        <td><%= transaction.type %></td>
+        <td class="amount-align"><%= transaction.amount %></td>
+        <td class="amount-align"><%= transaction.amount %></td>
+        <td class="amount-align"></td>
+        <td class="amount-align"><a href="/transactions/edit/<%= transaction._id %>"><img src="images/icon_edit.png" alt="Edit" title="Edit" class="ledger-icon" /></a></td>
+        <td><a href="/transactions/delete/<%= transaction._id %>"><img src="images/icon_delete.png" alt="Delete" title="Delete" class="ledger-icon" /></a></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  <div class="float-right">
+    <a href="/transactions/add" class="cta float-right">Add Transaction</a>
+  </div>
+</section>
+<% } %>
 <% include footer %>

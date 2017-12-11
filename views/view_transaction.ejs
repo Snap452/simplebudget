@@ -1,3 +1,7 @@
 <% include header %>
-    <h1><%= transaction.date + ' ' + transaction.amount + ' ' + transaction.type%></h1>
+<section class="center">
+  <div class="topbar">
+    <h2><%= (transaction) ? 'Update' : 'Add' %> Transaction</h2>
+  </div>
+</section>
 <% include footer %>

@@ -21,7 +21,7 @@ exports.connectDB = () => {
   });  
 };
 
-exports.allGoals = () => {
+exports.allGoals = (user_id) => {
   return exports.connectDB()
   .then((db) => {
     var collection = db.collection('goals');
@@ -75,7 +75,7 @@ exports.update = (_id, goal_name, goal_target, goal_length) => {
 exports.destroy = function(_id) {
   return exports.connectDB()
   .then((db) => {
-    var collection = db.collection('goalls');
+    var collection = db.collection('goals');
     return collection.deleteOne({_id: new ObjectId(_id)})
       .then((result) => {return result;});
   });

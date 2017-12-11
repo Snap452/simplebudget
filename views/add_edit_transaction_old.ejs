@@ -1,0 +1,88 @@
+<% if (transaction) { %>
+  <h1><%= title %></h1>
+<% } else { %>
+  <section class="center">
+    <div class="topbar">
+      <h2>Add a transaction</h2>
+    </div>
+  </section>
+<% } %>
+<section class="center">
+  <form action="/transactions/save" method="post">
+    <div class="form-group">
+      <% if (transaction) { %>
+        <input type="hidden" name="_id" value="<%= transaction._id %>" />
+      <% } %>
+      
+      <div class="form-row p-1">
+        <div class="col-1 right-align">
+          <label for="date">Date</label>
+        </div>
+        <div class="col-3">
+          <input <%- general_helper.FormValue(date_helper.FormatFormDate(transaction.date)) %> type="date" name="date" />
+        </div>
+      </div>
+      
+      <div class="form-row p-1">
+        <div class="col-1 right-align">
+          <label for="desc">Description</label>
+        </div>
+        <div class="col-3">
+          <input <%- general_helper.FormValue(transaction.desc) %> type="text" name="desc" />
+        </div>
+      </div>
+      
+      <div class="form-row p-1">
+        <div class="col-1 right-align">
+          <label for="type">Type</label>
+        </div>
+        <div class="col-3">
+          <input <%- general_helper.FormValue(transaction.type) %> type="text" name="type" />
+        </div>
+      </div>
+      
+      <div class="form-row p-1">
+        <div class="col-1 right-align">
+          <label for="amount">Amount</label>
+        </div>
+        <div class="col-3 input-align">
+          <input <%- general_helper.FormValue(transaction.amount) %> type='number' step='0.01' value='0.00' placeholder='0.00' name="amount" />
+        </div>
+      </div>
+      
+      <div class="form-row p-1">
+        <div class="col-1 right-align">
+          <label>Withdraw</label>
+        </div>
+        <div class="col-3">
+          <input type='radio' name="amount-type" />
+        </div>
+      </div>
+      
+      <div class="form-row p-1">
+        <div class="col-1 right-align">
+          <label>Deposit</label>
+        </div>
+        <div class="col-3 input-align">
+          <input type='radio' name="amount-type" />
+        </div>
+      </div>
+      
+      <div class="form-row p-1">
+        <div class="col-1 right-align">
+          <label>Balance</label>
+        </div>
+        <div class="col-3 input-align">
+          <input <%- general_helper.FormValue(transaction.amount) %> type='number' step='0.01' value='0.00' placeholder='0.00' name="amount" />
+        </div>
+      </div>
+      
+      <div class="form-row p-1">
+        <div class="col-1"></div>
+        <div class="col-3">
+          <input name="submit" type="submit" value="<%= (transaction) ? 'Update' : 'Add' %> Transactions" />
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

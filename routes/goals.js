@@ -76,27 +76,22 @@ router.get('/add', function(req, res, next) {
 
 router.post('/save', function(req, res, next) {
   // Make sure we have all of the data we want
-  if (req.body.date && req.body.amount) {
+  if (req.body.goal_name && req.body.goal_target) {
     var save;
     // Was this a create or update?
     if (req.body._id) {
       // An update
       save = goals.update(
         req.body._id,
-        req.body.date,
-        req.body.amount,
-        req.body.type,
-        req.body.desc,
-        req.user._id);
+        req.body.goal_name,
+        req.body.goal_target,
+        req.body.goal_length);
     } else {
       // A create
       save = goals.create(
-        req.body.date,
-        req.body.amount,
-        req.body.type,
-        req.body.desc,
-        req.user._id
-        );
+        req.body.goal_name,
+        req.body.goal_target,
+        req.body.goal_length);
     }
     save.then(() => {
       res.redirect('/goals');
@@ -112,7 +107,7 @@ function redirectIfLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/login');
+  res.redirect('/login' + req.originalUrl);
 }
 
 module.exports = router;

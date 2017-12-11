@@ -11,7 +11,7 @@
       <% } %>
       <label>Goal:</label><input <%- general_helper.FormValue(goal.goal_name) %> type="text" name="goal_name" />
       <label>Target Amount:</label><input <%- general_helper.FormValue(goal.goal_target) %> type="number" name="goal_target" />
-      <label>Target Date:</label><input <%- general_helper.FormValue(date_helper.FormatFormDate((goal.goal_length)) %> type="date" name="goal_length" />
+      <label>Target Date:</label><input <%- general_helper.FormValue(date_helper.FormatFormDate((goal.goal_length))) %> type="date" name="goal_length" />
       <input name="submit" type="submit" value="<%= (goal) ? 'Update' : 'Add' %> Goal" />
     </form>
   </div>

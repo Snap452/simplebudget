@@ -1,23 +1,22 @@
 <% include header %>
-<div class="container">
-<div class="col-sm-6 col-sm-offset-3">
-  <h1><span class="fa fa-sign-in"></span> Login</h1>
-  <!-- show any messages that come back with authentication -->
-  <!-- LOGIN FORM -->
-  <form role='form' action="/login" method="post">
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" placeholder='Enter Username'>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" name="password" placeholder='Password'>
-    </div>
-    <button type="submit" class="btn btn-warning btn-lg">Login</button>&nbsp;<a href="/">
-      <button type="button" class="btn btn-primary">Cancel</button></a>
-  </form>
-  <p>Need an account? <a href="/register">Signup</a></p>
-  <p>Or go <a href="/">home</a>.</p>
-</div>
-</div>
+<section class="center" class="mainbody">
+	<div class="topbar">
+	  <h2>Log in</h2>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-5">
+			  <form role="form" action="/login" method="post">
+			    <input type="text" class="form-control mb-3" name="username" placeholder="Username" />
+			    <input type="password" class="form-control mb-3" name="password" placeholder="Password" />
+  			  <button type="submit" class="cta mr-2">Log in</button>
+          <a href="../"><button type="button" class="cta-grey">Cancel</button></a>
+          <p class="m-2">Need an account? <a href="/register">Register</a>.
+          <br />Or go <a href="../../">home</a>.</p>
+			    <input type="hidden" name="redirect" value="<%=redirectURL%>" />
+			  </form>
+			</div>
+		</div>
+	</div>
+</section>
 <% include footer %>
