@@ -13,7 +13,6 @@ var LocalStrategy = require('passport-local').Strategy;
 
 //Routes for each page tree
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var transactions = require('./routes/transactions');
 var goals = require('./routes/goals');
 
